@@ -82,6 +82,12 @@ sub { bottom: -.25em; }
 
 /*for all*/
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-image: linear-gradient(to bottom, #eafbff 0%, #eafbff 50%, #5290f9 50%, #5290f9 100%);
   font-family: 'Muli', sans-serif;
   box-sizing: border-box;
 }
@@ -105,7 +111,83 @@ li {
 /*=================================
   Header styling starts here
 =================================*/
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: width 0.6s linear, all 0.6s;
+  /* overflow-x: hidden; */
+}
 
+nav.active {
+  width: 100%;
+  transition: all 0.6s;
+}
+
+nav ul {
+  display: flex;
+  width: 0;
+  transition: width 0.6s linear, all 0.6s;
+}
+
+nav.active ul {
+  width: 100%;
+  gap: 20px;
+  transition: all 0.6s;
+}
+
+nav ul li {
+  transform: scale(-1,1);
+  /* transform: rotateY(20deg); */
+  opacity: 0;
+  transition: transform 0.6s linear, opacity 0.5s linear;
+}
+
+nav.active ul li {
+  opacity: 1;
+  transform: scale(1);
+  /* transform: rotateY(0deg); */
+}
+
+.icon {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  border: 0;
+  background-color: #fff;
+  position: relative;
+  cursor: pointer;
+}
+
+.icon:focus { outline: 0; }
+
+.icon .line {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  width: 20px;
+  background-color: #5290f9;
+  transition: 0.6s linear;
+}
+
+.line1 { height: 1px; }
+
+.icon .line2 {
+  top: auto;
+  bottom: 10px;
+  height: 2px;
+}
+
+nav.active .icon .line1 { 
+  height: 2px;
+  transform: rotate(-765deg) translateY(5px); 
+}
+
+nav.active .icon .line2 { transform: rotate(765deg) translateY(-5px); }
 /*=================================
   Header styling ends here
 =================================*/  
